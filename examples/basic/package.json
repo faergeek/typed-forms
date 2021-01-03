@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "basic",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html",
+    "cleanup": "rimraf dist"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "parcel": "^2.0.0-beta.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

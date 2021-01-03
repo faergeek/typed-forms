@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["@babel/env", { "loose": true }],
+    ["@babel/react", { "development": true }],
+    "@babel/typescript"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/env", { "loose": true, "targets": { "node": "current" } }]
+      ]
+    },
+    "production": {
+      "presets": ["@babel/react"]
+    }
+  }
+}

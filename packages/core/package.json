@@ -1,0 +1,6 @@
+{
+  "name": "@typed-forms/core",
+  "version": "0.0.1",
+  "module": "dist/typed-forms.esm.js",
+  "types": "dist/index.d.ts"
+}

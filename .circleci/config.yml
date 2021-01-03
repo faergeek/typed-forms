@@ -1,0 +1,36 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  build:
+    executor:
+      name: node/default
+      tag: '15'
+    steps:
+      - checkout
+      - node/with-cache:
+          cache-key: yarn.lock
+          steps:
+            - run:
+                name: Install dependencies
+                command: yarn install --frozen-lockfile
+      - run:
+          name: Check code formatting
+          command: yarn run lint:check-prettier-conflicts && yarn run prettier:check
+          when: always
+      - run:
+          name: Lint
+          command: yarn run lint
+          when: always
+      - run:
+          name: Build packages
+          command: yarn run build
+          when: always
+      - run:
+          name: Typecheck
+          command: yarn run typecheck
+          when: always
+      - run:
+          name: Run unit tests
+          command: yarn test --ci --runInBand
+          when: always
