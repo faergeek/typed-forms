@@ -1,6 +1,21 @@
 {
   "name": "@typed-forms/core",
+  "description": "Type-safe, framework agnostic way to manager your forms",
   "version": "0.0.1",
+  "license": "MIT",
+  "author": "Sergey Slipchenko <faergeek@ya.ru>",
+  "repository": "faergeek/typed-forms",
+  "homepage": "https://github.com/faergeek/typed-forms",
+  "bugs": "https://github.com/faergeek/typed-forms/issues",
+  "keywords": [
+    "form",
+    "forms",
+    "type-safe",
+    "validation"
+  ],
   "module": "dist/typed-forms.esm.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
 }
