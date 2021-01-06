@@ -30,3 +30,42 @@ jobs:
           name: Build
           command: yarn run build
           when: always
+      - run: ls
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+      - run: ls
+  release:
+    executor:
+      name: node/default
+      tag: '15'
+    steps:
+      - run: ls
+      - checkout
+      - run: ls
+      - node/with-cache:
+          cache-key: yarn.lock
+          steps:
+            - run:
+                name: Install dependencies
+                command: yarn install --frozen-lockfile
+      - run: ls
+      - attach_workspace:
+          at: dist
+      - run: ls
+      - run:
+          name: Release
+          command: yarn run release
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
