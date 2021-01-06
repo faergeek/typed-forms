@@ -3,9 +3,7 @@ orbs:
   node: circleci/node@4.1.0
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '15'
+    executor: node/default
     steps:
       - checkout
       - node/install-packages:
@@ -31,9 +29,7 @@ jobs:
           paths:
             - dist
   release:
-    executor:
-      name: node/default
-      tag: '15'
+    executor: node/default
     steps:
       - checkout
       - node/install-packages:
