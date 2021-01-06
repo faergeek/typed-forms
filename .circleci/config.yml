@@ -23,10 +23,6 @@ jobs:
           command: yarn run lint
           when: always
       - run:
-          name: Typecheck
-          command: yarn run typecheck
-          when: always
-      - run:
           name: Run unit tests
           command: yarn test --ci --runInBand
           when: always
