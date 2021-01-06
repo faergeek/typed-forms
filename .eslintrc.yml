@@ -31,36 +31,20 @@ overrides:
     env:
       node: true
   - files:
-      - examples/**/*
-      - packages/**/*
+      - src*/**/*.ts
     extends:
       - plugin:@typescript-eslint/recommended
       - prettier/@typescript-eslint
     parserOptions:
       project: ./tsconfig.json
-    env:
-      browser: true
-      es6: true
-    rules:
-      '@typescript-eslint/explicit-module-boundary-types': off
   - files:
-      - examples/**/*.tsx
-      - packages/**/*.tsx
-    extends:
-      - plugin:react/recommended
-      - prettier/react
-      - plugin:react-hooks/recommended
-    settings:
-      react:
-        version: 'detect'
-  - files:
-      - packages/**/*.spec.*
+      - src/**/*.spec.*
     extends:
       - plugin:jest/recommended
       - plugin:jest/style
     rules:
-      jest/no-test-return-statement: error
-      jest/prefer-called-with: error
-      jest/prefer-spy-on: error
-      jest/prefer-strict-equal: error
-      jest/prefer-todo: error
+      jest/no-test-return-statement: warn
+      jest/prefer-called-with: warn
+      jest/prefer-spy-on: warn
+      jest/prefer-strict-equal: warn
+      jest/prefer-todo: warn

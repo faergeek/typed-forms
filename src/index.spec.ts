@@ -1,4 +1,4 @@
-import { atomic, createField, createForm, describeForm } from './index';
+import { atomic, createField, createForm, describeForm } from '.';
 
 test('form creation', () => {
   const form = describeForm({ name: createField<string>(atomic) });

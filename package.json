@@ -1,49 +1,56 @@
 {
-  "private": true,
-  "engines": {
-    "node": "^15",
-    "yarn": "^1"
-  },
-  "workspaces": [
-    "examples/*",
-    "packages/*"
+  "name": "@typed-forms/core",
+  "description": "Type-safe, framework agnostic way to manager your forms",
+  "license": "MIT",
+  "author": "Sergey Slipchenko <faergeek@ya.ru>",
+  "repository": "faergeek/typed-forms",
+  "homepage": "https://github.com/faergeek/typed-forms",
+  "bugs": "https://github.com/faergeek/typed-forms/issues",
+  "keywords": [
+    "form",
+    "forms",
+    "type-safe",
+    "validation"
+  ],
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "!**/*.spec.*"
   ],
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx --max-warnings 0 .",
-    "lint:check-prettier-conflicts": "eslint-config-prettier root.js examples/test.tsx packages/test.ts packages/test.spec.ts",
+    "lint": "eslint --max-warnings 0 .",
+    "lint:check-prettier-conflicts": "eslint-config-prettier test.js src/test.ts src/test.spec.ts",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
-    "typecheck": "tsc",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch",
-    "dev": "rollup -cw",
-    "build": "rollup -c",
-    "cleanup": "rimraf coverage examples/*/dist packages/*/dist"
+    "build": "tsc && rollup -c",
+    "cleanup": "rimraf coverage dist"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.1",
-    "@rollup/plugin-typescript": "^8.1.0",
     "@types/jest": "^26.0.19",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-jest": "^24.1.3",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.35.1",
-    "tslib": "^2.0.3",
+    "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.1.3"
   }
 }

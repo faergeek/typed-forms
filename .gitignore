@@ -1,8 +1,4 @@
-/.parcel-cache
 /.vscode
 /coverage
-/examples/*/dist
-/examples/*/node_modules
+/dist
 /node_modules
-/packages/*/dist
-/packages/*/node_modules

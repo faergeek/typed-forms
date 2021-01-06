@@ -1,27 +1,20 @@
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import { babel } from '@rollup/plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
-
-import corePkg from './packages/core/package.json';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
-  input: 'packages/core/src/index.ts',
+  input: 'src/index.ts',
+  external: [/@babel\/runtime/],
   plugins: [
-    nodeResolve({
-      extensions: ['.mjs', '.js', '.json', '.node', '.ts', '.tsx'],
-    }),
-    typescript({ tsconfig: 'packages/core/tsconfig.json' }),
-    commonjs(),
     babel({
-      babelHelpers: 'bundled',
+      babelHelpers: 'runtime',
       exclude: ['node_modules/**'],
-      extensions: [...DEFAULT_EXTENSIONS, '.ts', '.tsx'],
+      extensions: [...DEFAULT_EXTENSIONS, '.ts'],
     }),
+    terser(),
   ],
   output: {
-    file: `packages/core/${corePkg.module}`,
+    file: 'dist/index.esm.js',
     format: 'es',
     sourcemap: true,
     sourcemapExcludeSources: true,

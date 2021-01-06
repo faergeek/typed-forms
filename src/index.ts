@@ -186,18 +186,6 @@ export function createForm<TFormSchema extends FormSchema>(
         setError(fieldSchema.options.validate(getValue()));
       }
     );
-
-    // const allFields = Object.values(fields) as Array<Field<never, never>>;
-
-    // if (!allFields.every((field) => field.getError() === undefined)) {
-    //   return;
-    // }
-
-    // const errors = formSchema.validate(getValues());
-
-    // Object.entries(fields).forEach(([fieldName, field]) => {
-    //   field.setError(errors && errors[fieldName]);
-    // });
   }
 
   validate();
