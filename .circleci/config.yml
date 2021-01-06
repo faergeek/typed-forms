@@ -45,7 +45,6 @@ jobs:
           steps: []
       - attach_workspace:
           at: .
-      - run: ls dist
       - run:
           name: Release
           command: yarn run release
