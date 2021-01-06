@@ -4,13 +4,6 @@
     "node": "^15",
     "yarn": "^1"
   },
-  "jest": {
-    "coverageReporters": [
-      "html",
-      "lcov",
-      "text-summary"
-    ]
-  },
   "workspaces": [
     "examples/*",
     "packages/*"
