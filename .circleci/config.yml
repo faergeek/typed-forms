@@ -21,6 +21,10 @@ jobs:
           command: yarn test --ci --runInBand
           when: always
       - run:
+          name: Report coverage to codecov
+          command: yarn run test:report-coverage
+          when: always
+      - run:
           name: Build
           command: yarn run build
           when: always
