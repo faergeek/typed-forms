@@ -42,6 +42,7 @@ jobs:
       - checkout
       - node/with-cache:
           cache-key: yarn.lock
+          steps: []
       - attach_workspace:
           at: dist
       - run: ls dist
