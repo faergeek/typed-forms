@@ -18,7 +18,7 @@ jobs:
           when: always
       - run:
           name: Run unit tests
-          command: yarn test --ci --runInBand
+          command: yarn test --coverageReporters lcov --ci --runInBand
           when: always
       - run:
           name: Report coverage to codecov
