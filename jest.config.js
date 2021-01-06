@@ -1,4 +1,4 @@
 module.exports = {
-  coverageReporters: ['html', 'text-summary'],
+  coverageReporters: ['html', 'json', 'text-summary'],
   testEnvironment: 'node',
 };
