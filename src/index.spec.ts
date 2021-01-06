@@ -1,4 +1,70 @@
-import { atomic, createField, createForm, describeForm } from '.';
+import { expectTypeOf } from 'expect-type';
+
+import {
+  atomic,
+  createField,
+  createForm,
+  describeForm,
+  Field,
+  FormValues,
+} from '.';
+
+test('types', () => {
+  expectTypeOf(createField<string>(atomic)).toEqualTypeOf(
+    createField((initialValue: string) => {
+      expectTypeOf(atomic(initialValue)).toEqualTypeOf<Field<string, string>>();
+
+      return atomic(initialValue);
+    })
+  );
+
+  const form = describeForm({
+    age: createField<number | null>(atomic),
+    birthDate: createField<Date | null>(atomic),
+    name: createField<string>(atomic),
+    email: createField(atomic),
+  });
+
+  const { fields, getValues, submit } = createForm(form, {
+    age: null,
+    birthDate: null,
+    name: '',
+  });
+
+  expectTypeOf(fields.age).toEqualTypeOf<Field<number | null, string>>();
+  expectTypeOf(fields.birthDate).toEqualTypeOf<Field<Date | null, string>>();
+  expectTypeOf(fields.name).toEqualTypeOf<Field<string, string>>();
+
+  expectTypeOf(getValues).returns.toEqualTypeOf<FormValues<typeof form>>();
+  expectTypeOf<FormValues<typeof form>>().toEqualTypeOf<{
+    age: number | null;
+    birthDate: Date | null;
+    name: string;
+  }>();
+
+  expectTypeOf(submit).toBeCallableWith(
+    (_values: { age: number | null; birthDate: Date | null; name: string }) =>
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      {}
+  );
+
+  expectTypeOf(
+    submit
+  ).toBeCallableWith(
+    (_values: { age: number | null; birthDate: Date | null; name: string }) =>
+      Promise.resolve()
+  );
+
+  expectTypeOf(submit).toBeCallableWith(
+    async (_values: {
+      age: number | null;
+      birthDate: Date | null;
+      name: string;
+    }) =>
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      {}
+  );
+});
 
 test('form creation', () => {
   const form = describeForm({ name: createField<string>(atomic) });

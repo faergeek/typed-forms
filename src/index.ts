@@ -94,7 +94,7 @@ interface FieldOptions<TValue, TError> {
   validate: (value: TValue) => TError | undefined;
 }
 
-export interface FieldSchema<TValue, TError> {
+interface FieldSchema<TValue, TError> {
   factory: FieldFactory<TValue, TError, Field<TValue, TError>>;
   options: FieldOptions<TValue, TError>;
 }
@@ -119,7 +119,7 @@ type FieldsSchemaValues<TFieldsSchema extends FieldsSchema> = {
   >;
 };
 
-export interface FormSchema<TFieldsSchema extends FieldsSchema = FieldsSchema> {
+interface FormSchema<TFieldsSchema extends FieldsSchema = FieldsSchema> {
   fieldsSchema: TFieldsSchema;
 }
 

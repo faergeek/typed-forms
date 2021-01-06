@@ -38,12 +38,19 @@ overrides:
       - prettier/@typescript-eslint
     parserOptions:
       project: ./tsconfig.json
+    rules:
+      '@typescript-eslint/no-unused-vars': off
   - files:
       - src/**/*.spec.*
     extends:
       - plugin:jest/recommended
       - plugin:jest/style
     rules:
+      jest/expect-expect:
+        - warn
+        - assertFunctionNames:
+            - expect
+            - expectTypeOf
       jest/no-test-return-statement: warn
       jest/prefer-called-with: warn
       jest/prefer-spy-on: warn
