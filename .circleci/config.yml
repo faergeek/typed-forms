@@ -44,7 +44,7 @@ jobs:
           cache-key: yarn.lock
           steps: []
       - attach_workspace:
-          at: dist
+          at: .
       - run: ls dist
       - run:
           name: Release
