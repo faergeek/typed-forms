@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@4.1.0
 jobs:
   build:
     executor:
@@ -8,12 +8,8 @@ jobs:
       tag: '15'
     steps:
       - checkout
-      - node/with-cache:
-          cache-key: yarn.lock
-          steps:
-            - run:
-                name: Install dependencies
-                command: yarn install --frozen-lockfile
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Check code formatting
           command: yarn run lint:check-prettier-conflicts && yarn run prettier:check
@@ -40,9 +36,8 @@ jobs:
       tag: '15'
     steps:
       - checkout
-      - node/with-cache:
-          cache-key: yarn.lock
-          steps: []
+      - node/install-packages:
+          pkg-manager: yarn
       - attach_workspace:
           at: .
       - run:
