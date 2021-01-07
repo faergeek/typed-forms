@@ -2,7 +2,7 @@
   "extends": ["config:base"],
   "lockFileMaintenance": {
     "enabled": true,
-    "extends": ["schedule:earlyMondays"]
+    "extends": ["schedule:daily"]
   },
   "rangeStrategy": "update-lockfile"
 }
