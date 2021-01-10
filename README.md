@@ -2,6 +2,7 @@
 
 [![Latest npm release](https://badgen.net/npm/v/@typed-forms/core)](https://www.npmjs.com/package/@typed-forms/core)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![dependencies Status](https://status.david-dm.org/gh/faergeek/typed-forms.svg)](https://david-dm.org/faergeek/typed-forms)
 [![CircleCI status](https://badgen.net/circleci/github/faergeek/typed-forms/master)](https://app.circleci.com/pipelines/github/faergeek/typed-forms?branch=master)
 [![coverage](https://badgen.net/codecov/c/github/faergeek/typed-forms/master)](https://codecov.io/gh/faergeek/typed-forms)
 [![types](https://badgen.net/npm/types/@typed-forms/core)](https://www.npmjs.com/package/@typed-forms/core)
