@@ -43,7 +43,8 @@ jobs:
           paths:
             - dist
   release:
-    executor: node/default
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - node/install-packages:
