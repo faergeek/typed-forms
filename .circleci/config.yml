@@ -1,13 +1,23 @@
-version: 2.1
-orbs:
-  node: circleci/node@4.1.0
+version: 2
 jobs:
   build:
-    executor: node/default
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: yarn
+      - restore_cache:
+          keys:
+            - yarn-v1-{{ checksum "./yarn.lock" }}-{{ .Branch }}
+            - yarn-v1-{{ checksum "./yarn.lock" }}-master
+            - yarn-v1-{{ checksum "./yarn.lock" }}-
+            - yarn-v1-
+      - run:
+          name: Install packages
+          command: yarn --frozen-lockfile --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: yarn-v1-{{ checksum "./yarn.lock" }}-{{ .Branch }}
+          paths:
+            - ~/.cache/yarn
       - run:
           name: Check code formatting
           command: yarn run lint:check-prettier-conflicts && yarn run prettier:check
