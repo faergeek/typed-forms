@@ -20,12 +20,8 @@
     "src",
     "!**/*.spec.*"
   ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "scripts": {
+    "postinstall": "husky install",
     "lint": "eslint --max-warnings 0 .",
     "lint:check-prettier-conflicts": "eslint-config-prettier test.js src/test.ts src/test.spec.ts",
     "prettier": "prettier --write .",
