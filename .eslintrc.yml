@@ -35,7 +35,7 @@ overrides:
       - src*/**/*.ts
     extends:
       - plugin:@typescript-eslint/recommended
-      - prettier/@typescript-eslint
+      - prettier
     parserOptions:
       project: ./tsconfig.json
     rules:
